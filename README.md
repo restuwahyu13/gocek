@@ -31,7 +31,7 @@ go get github.com/restuwahyu13/gocek
 | -------------------------- | ---------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | **Expect**                 | **Value**  | **interface{}**  | `Expect` function is used every time you want to test a value.                                                            |
 | **Not**                    | **None**   | **-**            | `Not` If you know how to test something, .not lets you test its opposite                                                  |
-| **ToBe**                   | **value**  | **interface{}**  | `ToBe` to compare primitive values or to check referential identity of object instances.                                  |
+| **ToBe**                   | **value**  | **interface{}**  | `ToBe` to compare primitive values, but not support for type object like slice, map, struct or array.                                  |
 | **ToBeFalsy**              | **None**   | **-**            | `ToBeFalsy` when you don't care what a value is and you want to ensure a value is false in a boolean context.             |
 | **ToBeGreaterThan**        | **value**  | **interface{}**  | `ToBeGreaterThan `to compare received > expected for number or big integer values                                         |
 | **ToBeGreaterThanOrEqual** | **value**  | **interface{}**  | `ToBeGreaterThan` to compare received >= expected for number or big integer values                                        |

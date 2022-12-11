@@ -4,7 +4,7 @@ import (
 	"reflect"
 )
 
-func (h *assertion) ToBeGreaterThan(value interface{}) {
+func (h *gocekAssertion) ToBeGreaterThan(value interface{}) {
 	input := h.v
 
 	defer h.t.Cleanup(func() {

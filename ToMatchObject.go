@@ -8,7 +8,7 @@ import (
 	"github.com/restuwahyu13/gocek/helpers"
 )
 
-func (h *assertion) ToMatchObject(value interface{}) {
+func (h *gocekAssertion) ToMatchObject(value interface{}) {
 	input := h.v
 
 	defer h.t.Cleanup(func() {

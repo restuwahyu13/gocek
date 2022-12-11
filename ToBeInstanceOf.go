@@ -2,7 +2,7 @@ package gocek
 
 import "reflect"
 
-func (h *assertion) ToBeInstanceOf(value reflect.Kind) {
+func (h *gocekAssertion) ToBeInstanceOf(value reflect.Kind) {
 	input := h.v
 
 	defer h.t.Cleanup(func() {

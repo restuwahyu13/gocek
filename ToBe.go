@@ -4,7 +4,7 @@ import (
 	"reflect"
 )
 
-func (h *assertion) ToBe(value interface{}) {
+func (h *gocekAssertion) ToBe(value interface{}) {
 	input := h.v
 
 	defer h.t.Cleanup(func() {

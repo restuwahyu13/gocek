@@ -4,12 +4,12 @@ import "testing"
 
 func TestToMatchObject(action *testing.T) {
 	action.Run("Should be ToMatchObject - value slice int to be success", func(t *testing.T) {
-		test := NewAssertion(t)
+		test := NewGocek(t)
 		test.Expect([]int{1, 2, 3, 4, 5}).ToMatchObject([]int{1, 2, 3, 4, 5})
 	})
 
 	action.Run("Should be ToMatchObject - value slice string to be success", func(t *testing.T) {
-		test := NewAssertion(t)
+		test := NewGocek(t)
 		test.Expect([]string{"one", "two", "three"}).ToMatchObject([]string{"one", "two", "three"})
 	})
 
@@ -22,7 +22,7 @@ func TestToMatchObject(action *testing.T) {
 		secondVal["name"] = "john doe"
 		secondVal["age"] = 20
 
-		test := NewAssertion(t)
+		test := NewGocek(t)
 		test.Expect(firstVal).ToMatchObject(secondVal)
 	})
 
@@ -37,7 +37,7 @@ func TestToMatchObject(action *testing.T) {
 			{"name": "jane doex", "age": 20},
 		}
 
-		test := NewAssertion(t)
+		test := NewGocek(t)
 		test.Expect(firstVal).ToMatchObject(secondVal)
 	})
 
@@ -50,17 +50,17 @@ func TestToMatchObject(action *testing.T) {
 		inputslice2dFirst := []interface{}{input}
 		inputslice2dSecond := []interface{}{input}
 
-		test := NewAssertion(t)
+		test := NewGocek(t)
 		test.Expect(inputslice2dFirst).ToMatchObject(inputslice2dSecond)
 	})
 
 	action.Run("Should be ToMatchObject - value slice int not to be failed", func(t *testing.T) {
-		test := NewAssertion(t)
+		test := NewGocek(t)
 		test.Expect([]int{1, 2, 3}).Not().ToMatchObject([]string{"one", "two", "three"})
 	})
 
 	action.Run("Should be ToMatchObject - value slice string not to be failed", func(t *testing.T) {
-		test := NewAssertion(t)
+		test := NewGocek(t)
 		test.Expect([]string{"one", "two", "three"}).Not().ToMatchObject([]int{1, 2, 3})
 	})
 
@@ -73,7 +73,7 @@ func TestToMatchObject(action *testing.T) {
 		secondVal["name"] = "jane doe"
 		secondVal["age"] = 21
 
-		test := NewAssertion(t)
+		test := NewGocek(t)
 		test.Expect(firstVal).Not().ToMatchObject(secondVal)
 	})
 
@@ -88,7 +88,7 @@ func TestToMatchObject(action *testing.T) {
 			{"name": "jane doe", "age": 21},
 		}
 
-		test := NewAssertion(t)
+		test := NewGocek(t)
 		test.Expect(firstVal).Not().ToMatchObject(secondVal)
 	})
 
@@ -104,7 +104,7 @@ func TestToMatchObject(action *testing.T) {
 		inputslice2dFirst := []interface{}{input}
 		inputslice2dSecond := []interface{}{input2}
 
-		test := NewAssertion(t)
+		test := NewGocek(t)
 		test.Expect(inputslice2dFirst).Not().ToMatchObject(inputslice2dSecond)
 	})
 }

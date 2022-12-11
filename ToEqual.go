@@ -8,7 +8,7 @@ import (
 	"github.com/restuwahyu13/gocek/helpers"
 )
 
-func (h *assertion) ToEqual(value interface{}) {
+func (h *gocekAssertion) ToEqual(value interface{}) {
 	input := h.v
 
 	defer h.t.Cleanup(func() {

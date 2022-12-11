@@ -2,7 +2,7 @@ package gocek
 
 import "strings"
 
-func (h *assertion) ToContain(value string) {
+func (h *gocekAssertion) ToContain(value string) {
 	input := h.v
 
 	defer h.t.Cleanup(func() {

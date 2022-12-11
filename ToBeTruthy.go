@@ -2,7 +2,7 @@ package gocek
 
 import "reflect"
 
-func (h *assertion) ToBeTruthy() {
+func (h *gocekAssertion) ToBeTruthy() {
 	input := h.v
 
 	defer h.t.Cleanup(func() {

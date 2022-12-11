@@ -4,9 +4,9 @@ import (
 	"testing"
 )
 
-func TestNewAssertion(action *testing.T) {
-	action.Run("Shoud be TestNewAssertion - expect return value success", func(t *testing.T) {
-		test := NewAssertion(t)
+func TestNewGocek(action *testing.T) {
+	action.Run("Shoud be TestNewGocek - expect return value success", func(t *testing.T) {
+		test := NewGocek(t)
 		res := test.Expect(2022)
 
 		if res.v == nil {
@@ -14,8 +14,8 @@ func TestNewAssertion(action *testing.T) {
 		}
 	})
 
-	action.Run("Shoud be TestNewAssertion - expect return value nil", func(t *testing.T) {
-		test := NewAssertion(t)
+	action.Run("Shoud be TestNewGocek - expect return value nil", func(t *testing.T) {
+		test := NewGocek(t)
 		res := test.Expect(nil)
 
 		if res.v != nil {

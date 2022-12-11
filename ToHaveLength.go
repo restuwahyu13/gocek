@@ -1,6 +1,6 @@
 package gocek
 
-func (h *assertion) ToHaveLength(value int) {
+func (h *gocekAssertion) ToHaveLength(value int) {
 	input := h.v
 
 	defer h.t.Cleanup(func() {

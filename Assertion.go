@@ -5,15 +5,15 @@ import (
 	"testing"
 )
 
-type assertion struct {
+type gocekAssertion struct {
 	v interface{}
 	o string
 	t *testing.T
 }
 
-type iassertion interface {
-	Expect(value interface{}) *assertion
-	Not() *assertion
+type gocekInterface interface {
+	Expect(value interface{}) *gocekAssertion
+	Not() *gocekAssertion
 	ToBe(value interface{})
 	ToBeNil()
 	ToBeTruthy()
@@ -32,17 +32,17 @@ type iassertion interface {
 	ToMatchObject(value interface{})
 }
 
-func NewAssertion(t *testing.T) iassertion {
-	return &assertion{t: t}
+func NewGocek(t *testing.T) gocekInterface {
+	return &gocekAssertion{t: t}
 }
 
-func (h *assertion) Expect(value interface{}) *assertion {
+func (h *gocekAssertion) Expect(value interface{}) *gocekAssertion {
 	h.o = "=="
 	h.v = value
 	return h
 }
 
-func (h *assertion) Not() *assertion {
+func (h *gocekAssertion) Not() *gocekAssertion {
 	h.o = "!="
 	return h
 }

@@ -5,7 +5,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/restuwahyu13/gocek/blob/master/CONTRIBUTING.md)
 
 
-**Gocek** is a simple BDD / TDD assertion library for golang, that can be delightfully paired with any golang testing framework or without framework.
+**Gocek** is a simple tools for BDD / TDD testing assertion library for golang, that can be delightfully paired with any golang testing framework or without framework.
 
 
 ## Table Of Content

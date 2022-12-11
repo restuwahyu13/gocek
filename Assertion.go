@@ -11,7 +11,7 @@ type assertion struct {
 	t *testing.T
 }
 
-type iAssertion interface {
+type iassertion interface {
 	Expect(value interface{}) *assertion
 	Not() *assertion
 	ToBe(value interface{})
@@ -29,9 +29,10 @@ type iAssertion interface {
 	ToBeLessThan(value interface{})
 	ToBeLessThanOrEqual(value interface{})
 	ToEqual(value interface{})
+	ToMatchObject(value interface{})
 }
 
-func NewAssertion(t *testing.T) iAssertion {
+func NewAssertion(t *testing.T) iassertion {
 	return &assertion{t: t}
 }
 

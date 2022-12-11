@@ -8,7 +8,7 @@ import (
 	"github.com/restuwahyu13/gocek/helpers"
 )
 
-func (h *assertion) ToEqual(value interface{}) {
+func (h *assertion) ToMatchObject(value interface{}) {
 	input := h.v
 
 	defer h.t.Cleanup(func() {
@@ -23,15 +23,11 @@ func (h *assertion) ToEqual(value interface{}) {
 	typeValueSecond := ""
 
 	if !reflect.DeepEqual(input, nil) && !reflect.DeepEqual(value, nil) {
-
 		typeOfFirst := reflect.TypeOf(input).Kind().String()
 		typeOfSecond := reflect.TypeOf(value).Kind().String()
 
 		isSliceOrArray := typeOfFirst == reflect.Array.String() || typeOfFirst == reflect.Slice.String() || typeOfSecond == reflect.Array.String() || typeOfSecond == reflect.Slice.String()
 		IsMapsOrStruct := reflect.TypeOf(input).Kind().String() == reflect.Map.String() && reflect.TypeOf(value).Kind().String() == reflect.Map.String() || reflect.TypeOf(input).Kind().String() == reflect.Struct.String() && reflect.TypeOf(value).Kind().String() == reflect.Struct.String()
-
-		notObjectType := typeOfFirst != reflect.Array.String() && typeOfFirst != reflect.Slice.String() && typeOfFirst != reflect.Map.String() && typeOfFirst != reflect.Chan.String() &&
-			typeOfFirst != reflect.Func.String() && typeOfFirst != reflect.Struct.String() && typeOfSecond != reflect.Array.String() && typeOfSecond != reflect.Slice.String() && typeOfSecond != reflect.Map.String() && typeOfSecond != reflect.Chan.String() && typeOfSecond != reflect.Func.String() && typeOfSecond != reflect.Struct.String()
 
 		if isSliceOrArray {
 			convertFirst := helpers.ToInterfaceSlice(input)
@@ -82,7 +78,7 @@ func (h *assertion) ToEqual(value interface{}) {
 								if !reflect.DeepEqual(convertMapFirst[i], nil) && !reflect.DeepEqual(convertMapSecond[i], nil) && v != convertMapSecond[i] {
 									matchData = false
 								} else if reflect.DeepEqual(convertMapFirst[i], nil) || reflect.DeepEqual(convertMapSecond[i], nil) {
-									matchData = false
+									h.t.FailNow()
 								}
 							}
 						} else if h.o == "!=" {
@@ -109,7 +105,7 @@ func (h *assertion) ToEqual(value interface{}) {
 									if !reflect.DeepEqual(convertMapFirst[j], nil) && !reflect.DeepEqual(convertMapSecond[j], nil) && val != convertMapSecond[j] {
 										matchData = false
 									} else if reflect.DeepEqual(convertMapFirst[j], nil) || reflect.DeepEqual(convertMapSecond[j], nil) {
-										matchData = false
+										h.t.FailNow()
 									}
 								}
 							}
@@ -122,17 +118,17 @@ func (h *assertion) ToEqual(value interface{}) {
 									if !reflect.DeepEqual(convertMapFirst[j], nil) && !reflect.DeepEqual(convertMapSecond[j], nil) && val == convertMapSecond[j] {
 										notMatchData = true
 									} else if reflect.DeepEqual(convertMapFirst[j], nil) && reflect.DeepEqual(convertMapSecond[j], nil) {
-										notMatchData = true
+										h.t.FailNow()
 									}
 								}
 							}
 						} else {
-							h.t.FailNow()
+							notMatchData = true
 						}
 					}
 				}
 			} else {
-				matchData = false
+				h.t.FailNow()
 			}
 
 		} else if len(helpers.ToInterfaceMap(input)) == len(helpers.ToInterfaceMap(value)) && IsMapsOrStruct {
@@ -152,25 +148,15 @@ func (h *assertion) ToEqual(value interface{}) {
 					if !reflect.DeepEqual(convertFirst[i], nil) && !reflect.DeepEqual(convertSecond[i], nil) && v == convertSecond[i] {
 						notMatchData = true
 					} else if reflect.DeepEqual(convertFirst[i], nil) && reflect.DeepEqual(convertSecond[i], nil) {
-						notMatchData = true
+						h.t.FailNow()
 					}
 				}
 			} else {
 				h.t.FailNow()
 			}
-		} else if h.o == "==" && notObjectType && input != value {
-			matchData = false
-		} else if h.o == "!=" && notObjectType && input == value {
-			notMatchData = true
-		} else if h.o == "==" && !reflect.DeepEqual(input, value) {
-			h.t.FailNow()
 		}
 	} else {
-		if h.o == "==" && reflect.DeepEqual(input, nil) != reflect.DeepEqual(value, nil) {
-			h.t.FailNow()
-		} else if h.o == "!=" && reflect.DeepEqual(input, nil) == reflect.DeepEqual(value, nil) {
-			h.t.FailNow()
-		}
+		h.t.FailNow()
 	}
 
 	if h.o == "==" && !matchData {

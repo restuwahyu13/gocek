@@ -30,8 +30,8 @@ func (h *gocekAssertion) ToEqual(value interface{}) {
 		isSliceOrArray := typeOfFirst == reflect.Array.String() || typeOfFirst == reflect.Slice.String() || typeOfSecond == reflect.Array.String() || typeOfSecond == reflect.Slice.String()
 		IsMapsOrStruct := reflect.TypeOf(input).Kind().String() == reflect.Map.String() && reflect.TypeOf(value).Kind().String() == reflect.Map.String() || reflect.TypeOf(input).Kind().String() == reflect.Struct.String() && reflect.TypeOf(value).Kind().String() == reflect.Struct.String()
 
-		notObjectType := typeOfFirst != reflect.Array.String() && typeOfFirst != reflect.Slice.String() && typeOfFirst != reflect.Map.String() && typeOfFirst != reflect.Chan.String() &&
-			typeOfFirst != reflect.Func.String() && typeOfFirst != reflect.Struct.String() && typeOfSecond != reflect.Array.String() && typeOfSecond != reflect.Slice.String() && typeOfSecond != reflect.Map.String() && typeOfSecond != reflect.Chan.String() && typeOfSecond != reflect.Func.String() && typeOfSecond != reflect.Struct.String()
+		notObjectType := typeOfFirst != reflect.Array.String() || typeOfFirst != reflect.Slice.String() || typeOfFirst != reflect.Map.String() || typeOfFirst != reflect.Chan.String() ||
+			typeOfFirst != reflect.Func.String() || typeOfFirst != reflect.Struct.String() || typeOfFirst != reflect.Pointer.String() || typeOfSecond != reflect.Array.String() || typeOfSecond != reflect.Slice.String() || typeOfSecond != reflect.Map.String() || typeOfSecond != reflect.Chan.String() || typeOfSecond != reflect.Func.String() || typeOfSecond != reflect.Struct.String() || typeOfSecond != reflect.Pointer.String()
 
 		if isSliceOrArray {
 			convertFirst := helpers.ToInterfaceSlice(input)

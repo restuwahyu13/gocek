@@ -27,7 +27,7 @@ func (h *gocekAssertion) ToMatchObject(value interface{}) {
 		typeOfSecond := reflect.TypeOf(value).Kind().String()
 
 		isSliceOrArray := typeOfFirst == reflect.Array.String() || typeOfFirst == reflect.Slice.String() || typeOfSecond == reflect.Array.String() || typeOfSecond == reflect.Slice.String()
-		IsMapsOrStruct := reflect.TypeOf(input).Kind().String() == reflect.Map.String() && reflect.TypeOf(value).Kind().String() == reflect.Map.String() || reflect.TypeOf(input).Kind().String() == reflect.Struct.String() && reflect.TypeOf(value).Kind().String() == reflect.Struct.String()
+		IsMapsOrStruct := reflect.TypeOf(input).Kind().String() == reflect.Map.String() || reflect.TypeOf(value).Kind().String() == reflect.Map.String() || reflect.TypeOf(input).Kind().String() == reflect.Struct.String() || reflect.TypeOf(value).Kind().String() == reflect.Struct.String()
 
 		if isSliceOrArray {
 			convertFirst := helpers.ToInterfaceSlice(input)

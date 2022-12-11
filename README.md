@@ -27,24 +27,24 @@ go get github.com/restuwahyu13/gocek
 
 ## API Reference
 
-| **Method**                 | **Params**             | **Description**                                                                                                        |
-| -------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **ToBe**                   | **value interface{}**  | ToBe to compare primitive values or to check referential identity of object instances.                                 |
-| **ToBeFalsy**              | **None**               | ToBeFalsy when you don't care what a value is and you want to ensure a value is false in a boolean context.            |
-| **ToBeGreaterThan**        | **value interface{}**  | ToBeGreaterThan to compare received > expected for number or big integer values                                        |
-| **ToBeGreaterThanOrEqual** | **value interface{}**  | ToBeGreaterThan to compare received >= expected for number or big integer values                                       |
-| **ToBeInstanceOf**         | **value reflect.Kind** | ToBeInstanceOf(Class) to check that an object is an instance of a class. This matcher uses instanceof underneath       |
-| **ToBeLessThan**           | **value interface{}**  | ToBeLessThan to compare received < expected for number or big integer values                                           |
-| **ToBeLessThanOrEqual**    | **value interface{}**  | ToBeLessThanOrEqual to compare received <= expected for number or big integer values                                   |
-| **ToBeMinus**              | **None**               | ToBeMinus when you don't care what a value is and you want to ensure a value is minus in a float or integer context.   |
-| **ToBeNil**                | **None**               | ToBeNil when you don't care what a value is and you want to ensure a value is nil context.                             |
-| **ToBeTruthy**             | **None**               | ToBeTruthy when you don't care what a value is and you want to ensure a value is false in a boolean context.           |
-| **ToBeZero**               | **None**               | ToBeZero when you don't care what a value is and you want to ensure a value is zero in a integer or floatcontext.      |
-| **ToContain**              | **value string**       | ToContain when you want to check that an item is in an string                                                          |
-| **ToEqual**                | **value interface{}**  | ToEqual to compare recursively primitive values or all properties of object instances (also known as "deep" equality). |
-| **ToHaveLength**           | **value int**          | ToHaveLength to check that an object has a length property and it is set to a certain numeric value.                   |
-| **ToHaveReturned**         | **None**               | ToHaveReturned to check function returned value or not                                                                 |
-| **ToMatchObject**          | **value interface{}**  | ToMatchObject to check that a slice, map, struct or array matches a subset of the properties of an object.             |
+| **Method**                 | **Params**             | **Description**                                                                                                           |
+| -------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **ToBe**                   | **value interface{}**  | `ToBe` to compare primitive values or to check referential identity of object instances.                                  |
+| **ToBeFalsy**              | **None**               | `ToBeFalsy` when you don't care what a value is and you want to ensure a value is false in a boolean context.             |
+| **ToBeGreaterThan**        | **value interface{}**  | `ToBeGreaterThan `to compare received > expected for number or big integer values                                         |
+| **ToBeGreaterThanOrEqual** | **value interface{}**  | `ToBeGreaterThan` to compare received >= expected for number or big integer values                                        |
+| **ToBeInstanceOf**         | **value reflect.Kind** | `ToBeInstanceOf` to check that an object is an instance of a class. This matcher uses instanceof underneath               |
+| **ToBeLessThan**           | **value interface{}**  | `ToBeLessThan`to compare received < expected for number or big integer values                                             |
+| **ToBeLessThanOrEqual**    | **value interface{}**  | `ToBeLessThanOrEqual` to compare received <= expected for number or big integer values                                    |
+| **ToBeMinus**              | **None**               | `ToBeMinus` when you don't care what a value is and you want to ensure a value is minus in a float or integer context.    |
+| **ToBeNil**                | **None**               | `ToBeNil` when you don't care what a value is and you want to ensure a value is nil context.                              |
+| **ToBeTruthy**             | **None**               | `ToBeTruthy` when you don't care what a value is and you want to ensure a value is false in a boolean context.            |
+| **ToBeZero**               | **None**               | `ToBeZero` when you don't care what a value is and you want to ensure a value is zero in a integer or floatcontext.       |
+| **ToContain**              | **value string**       | `ToContain` when you want to check that an item is in an string                                                           |
+| **ToEqual**                | **value interface{}**  | `ToEqual` to compare recursively primitive values or all properties of object instances like slice, map, struct or array. |
+| **ToHaveLength**           | **value int**          | `ToHaveLength` to check that an object has a length property and it is set to a certain numeric value.                    |
+| **ToHaveReturned**         | **None**               | `ToHaveReturned` to check function returned value or not                                                                  |
+| **ToMatchObject**          | **value interface{}**  | `ToMatchObject` to check that a slice, map, struct or array matches a subset of the properties of an object.              |
 
 ## Testing
 

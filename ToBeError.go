@@ -2,6 +2,7 @@ package gocek
 
 import (
 	"reflect"
+	"strings"
 )
 
 func (h *gocekAssertion) ToBeError() {
@@ -13,8 +14,9 @@ func (h *gocekAssertion) ToBeError() {
 
 	if h.o == "==" && !reflect.DeepEqual(input, nil) {
 		inputType := reflect.TypeOf(input).Kind().String()
+		isError := strings.Contains(reflect.ValueOf(input).Elem().Addr().String(), "errors")
 
-		if !reflect.DeepEqual(inputType, reflect.Ptr.String()) {
+		if !reflect.DeepEqual(inputType, reflect.Ptr.String()) || !isError {
 			h.t.FailNow()
 		}
 	} else {

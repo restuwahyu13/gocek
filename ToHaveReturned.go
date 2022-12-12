@@ -9,9 +9,17 @@ func (h *gocekAssertion) ToHaveReturned() {
 		input = nil
 	})
 
-	if h.o == "==" && reflect.TypeOf(input).Kind().String() == reflect.Func.String() && reflect.TypeOf(input).NumOut() != 1 {
-		h.t.FailNow()
-	} else if h.o == "!=" && reflect.TypeOf(input).Kind().String() == reflect.Func.String() && reflect.TypeOf(input).NumOut() == 1 {
-		h.t.FailNow()
+	if !reflect.DeepEqual(input, nil) {
+		if h.o == "==" && reflect.TypeOf(input).Kind().String() == reflect.Func.String() && reflect.TypeOf(input).NumOut() != 1 {
+			h.t.FailNow()
+		} else if h.o == "!=" && reflect.TypeOf(input).Kind().String() == reflect.Func.String() && reflect.TypeOf(input).NumOut() == 1 {
+			h.t.FailNow()
+		}
+	} else {
+		if h.o == "==" && !reflect.DeepEqual(input, nil) {
+			h.t.FailNow()
+		} else if h.o == "!=" && reflect.DeepEqual(input, nil) {
+			h.t.FailNow()
+		}
 	}
 }

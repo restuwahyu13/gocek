@@ -10,6 +10,6 @@ func TestToContain(action *testing.T) {
 
 	action.Run("Should be value contain is not exist using not", func(t *testing.T) {
 		test := NewGocek(t)
-		test.Expect("hello world").Not().ToContain("dear")
+		test.Expect(nil).Not().ToContain("dear")
 	})
 }

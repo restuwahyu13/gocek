@@ -9,9 +9,11 @@ func (h *gocekAssertion) ToBeNil() {
 		input = nil
 	})
 
-	if h.o == "==" && !reflect.DeepEqual(input, nil) {
+	inputType := reflect.DeepEqual(input, nil)
+
+	if h.o == "==" && !inputType {
 		h.t.FailNow()
-	} else if h.o == "!=" && reflect.DeepEqual(input, nil) {
+	} else if h.o == "!=" && inputType {
 		h.t.FailNow()
 	}
 }

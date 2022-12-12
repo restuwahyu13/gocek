@@ -12,6 +12,12 @@ func (h *gocekAssertion) ToBeZero() {
 	if !reflect.DeepEqual(input, nil) {
 		inputType := reflect.TypeOf(input).Kind().String()
 
+		notObjectType := inputType == reflect.Slice.String() || inputType == reflect.Array.String() || inputType == reflect.Map.String() || inputType == reflect.Bool.String() || inputType == reflect.Func.String() || inputType == reflect.Chan.String() || inputType == reflect.Pointer.String() || inputType == reflect.Struct.String() || inputType == reflect.Complex64.String() || inputType == reflect.Complex128.String() || inputType == reflect.String.String() || inputType == reflect.Ptr.String()
+
+		if h.o == "==" && notObjectType {
+			h.t.FailNow()
+		}
+
 		if inputType == reflect.Float32.String() {
 			if h.o == "==" && input.(float32) > -1 && input.(float32) != 0 {
 				h.t.FailNow()
@@ -54,10 +60,10 @@ func (h *gocekAssertion) ToBeZero() {
 			} else if h.o == "!=" && input.(int64) > -1 && input.(int64) == 0 {
 				h.t.FailNow()
 			}
-		} else {
-			h.t.FailNow()
 		}
 	} else {
-		h.t.FailNow()
+		if h.o == "==" && reflect.DeepEqual(input, nil) {
+			h.t.FailNow()
+		}
 	}
 }

@@ -10,6 +10,6 @@ func TestToBeFalsy(action *testing.T) {
 
 	action.Run("Should be ToBeFalsy - value is not to be false", func(t *testing.T) {
 		test := NewGocek(t)
-		test.Expect(true).Not().ToBeFalsy()
+		test.Expect(nil).Not().ToBeFalsy()
 	})
 }

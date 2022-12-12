@@ -10,6 +10,6 @@ func TestToBeLessThan(action *testing.T) {
 
 	action.Run("Should be ToBeLessThan - value int is lessThan not to be failed", func(t *testing.T) {
 		test := NewGocek(t)
-		test.Expect(20).Not().ToBeLessThan(10)
+		test.Expect(nil).Not().ToBeLessThan(10)
 	})
 }

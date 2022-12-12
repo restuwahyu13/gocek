@@ -16,6 +16,8 @@ func (h *gocekAssertion) ToBeFalsy() {
 			h.t.FailNow()
 		}
 	} else {
-		h.t.FailNow()
+		if h.o == "==" && reflect.DeepEqual(input, nil) {
+			h.t.FailNow()
+		}
 	}
 }

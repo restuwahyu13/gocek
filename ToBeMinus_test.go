@@ -15,11 +15,11 @@ func TestToBeMinus(action *testing.T) {
 
 	action.Run("Should be ToBeMinus - value int is not to be minus", func(t *testing.T) {
 		test := NewGocek(t)
-		test.Expect(1).Not().ToBeMinus()
+		test.Expect(nil).Not().ToBeMinus()
 	})
 
 	action.Run("Should be ToBeMinus - value float is not to be minus", func(t *testing.T) {
 		test := NewGocek(t)
-		test.Expect(2.45).Not().ToBeMinus()
+		test.Expect(nil).Not().ToBeMinus()
 	})
 }

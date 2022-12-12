@@ -12,15 +12,16 @@ func (h *gocekAssertion) ToBeError() {
 		input = nil
 	})
 
-	if h.o == "==" && !reflect.DeepEqual(input, nil) {
-		inputType := reflect.TypeOf(input).Kind().String()
-		isError := strings.Contains(reflect.ValueOf(input).Elem().Addr().String(), "errors")
+	if !reflect.DeepEqual(input, nil) {
+		isError := strings.Contains(reflect.ValueOf(input).String(), "*errors")
 
-		if !reflect.DeepEqual(inputType, reflect.Ptr.String()) || !isError {
+		if h.o == "==" && !isError {
+			h.t.FailNow()
+		} else if h.o == "!=" && isError {
 			h.t.FailNow()
 		}
 	} else {
-		if h.o == "!=" && input != nil {
+		if h.o == "==" && reflect.DeepEqual(input, nil) {
 			h.t.FailNow()
 		}
 	}

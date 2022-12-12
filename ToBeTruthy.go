@@ -10,12 +10,16 @@ func (h *gocekAssertion) ToBeTruthy() {
 	})
 
 	if !reflect.DeepEqual(input, nil) {
-		if h.o == "==" && input != true {
+		inputType := reflect.DeepEqual(input, true)
+
+		if h.o == "==" && !inputType && input != true {
 			h.t.FailNow()
-		} else if h.o == "!=" && input == true {
+		} else if h.o == "!=" && inputType && input == true {
 			h.t.FailNow()
 		}
 	} else {
-		h.t.FailNow()
+		if h.o == "==" && reflect.DeepEqual(input, nil) {
+			h.t.FailNow()
+		}
 	}
 }

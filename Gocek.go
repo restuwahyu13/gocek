@@ -30,6 +30,8 @@ type gocekInterface interface {
 	ToBeLessThanOrEqual(value interface{})
 	ToEqual(value interface{})
 	ToMatchObject(value interface{})
+	ToMatch(regex string)
+	ToBeError()
 }
 
 func NewGocek(t *testing.T) gocekInterface {

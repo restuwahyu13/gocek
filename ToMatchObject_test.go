@@ -3,17 +3,17 @@ package gocek
 import "testing"
 
 func TestToMatchObject(action *testing.T) {
-	action.Run("Should be ToMatchObject - value slice int to be success", func(t *testing.T) {
+	action.Run("Should be ToMatchObject - value slice int is to be success", func(t *testing.T) {
 		test := NewGocek(t)
 		test.Expect([]int{1, 2, 3, 4, 5}).ToMatchObject([]int{1, 2, 3, 4, 5})
 	})
 
-	action.Run("Should be ToMatchObject - value slice string to be success", func(t *testing.T) {
+	action.Run("Should be ToMatchObject - value slice string is to be success", func(t *testing.T) {
 		test := NewGocek(t)
 		test.Expect([]string{"one", "two", "three"}).ToMatchObject([]string{"one", "two", "three"})
 	})
 
-	action.Run("Should be ToMatchObject - value map to be success", func(t *testing.T) {
+	action.Run("Should be ToMatchObject - value map is to be success", func(t *testing.T) {
 		firstVal := make(map[string]interface{})
 		firstVal["name"] = "john doe"
 		firstVal["age"] = 20
@@ -26,7 +26,7 @@ func TestToMatchObject(action *testing.T) {
 		test.Expect(firstVal).ToMatchObject(secondVal)
 	})
 
-	action.Run("Should be ToMatchObject - value slice map to be success", func(t *testing.T) {
+	action.Run("Should be ToMatchObject - value slice map is to be success", func(t *testing.T) {
 		firstVal := []map[string]interface{}{
 			{"name": "john doex", "age": 20},
 			{"name": "jane doex", "age": 20},
@@ -41,7 +41,7 @@ func TestToMatchObject(action *testing.T) {
 		test.Expect(firstVal).ToMatchObject(secondVal)
 	})
 
-	action.Run("Should be ToMatchObject - value 2d slice map to be success", func(t *testing.T) {
+	action.Run("Should be ToMatchObject - value 2d slice map is to be success", func(t *testing.T) {
 		input := []map[string]interface{}{
 			{"name": "paman", "age": 20},
 			{"name": "bibi", "age": 20},
@@ -54,17 +54,17 @@ func TestToMatchObject(action *testing.T) {
 		test.Expect(inputslice2dFirst).ToMatchObject(inputslice2dSecond)
 	})
 
-	action.Run("Should be ToMatchObject - value slice int not to be failed", func(t *testing.T) {
+	action.Run("Should be ToMatchObject - value slice int is to be failed", func(t *testing.T) {
 		test := NewGocek(t)
 		test.Expect([]int{1, 2, 3}).Not().ToMatchObject([]string{"one", "two", "three"})
 	})
 
-	action.Run("Should be ToMatchObject - value slice string not to be failed", func(t *testing.T) {
+	action.Run("Should be ToMatchObject - value slice string is to be failed", func(t *testing.T) {
 		test := NewGocek(t)
 		test.Expect([]string{"one", "two", "three"}).Not().ToMatchObject([]int{1, 2, 3})
 	})
 
-	action.Run("Should be ToMatchObject - value map not to be failed", func(t *testing.T) {
+	action.Run("Should be ToMatchObject - value map is to be failed", func(t *testing.T) {
 		firstVal := make(map[string]interface{})
 		firstVal["name"] = "john doe"
 		firstVal["age"] = 20
@@ -77,7 +77,7 @@ func TestToMatchObject(action *testing.T) {
 		test.Expect(firstVal).Not().ToMatchObject(secondVal)
 	})
 
-	action.Run("Should be ToMatchObject - value slice map  not to be failed", func(t *testing.T) {
+	action.Run("Should be ToMatchObject - value slice map is to be failed", func(t *testing.T) {
 		firstVal := []map[string]interface{}{
 			{"name": "john doex", "age": 20},
 			{"name": "jane doex", "age": 20},
@@ -92,7 +92,7 @@ func TestToMatchObject(action *testing.T) {
 		test.Expect(firstVal).Not().ToMatchObject(secondVal)
 	})
 
-	action.Run("Should be ToMatchObject - value 2d slice struct not match success", func(t *testing.T) {
+	action.Run("Should be ToMatchObject - value 2d slice struct is to be failed", func(t *testing.T) {
 		input := []struct{ Name string }{
 			{Name: "john doe"},
 		}

@@ -20,7 +20,7 @@ func (h *gocekAssertion) ToContain(value string) {
 			h.t.FailNow()
 		}
 	} else {
-		if h.o == "==" && !reflect.DeepEqual(input, value) {
+		if h.o == "==" && reflect.DeepEqual(input, value) {
 			h.t.FailNow()
 		}
 	}

@@ -4,9 +4,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/restuwahyu13/gocek)](https://goreportcard.com/report/github.com/restuwahyu13/gocek)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/restuwahyu13/gocek/blob/master/CONTRIBUTING.md)
 
-
 **Gocek** is a simple tools for BDD / TDD testing assertion library for golang, that can be delightfully paired with any golang testing framework or without framework.
-
 
 ## Table Of Content
 
@@ -49,6 +47,7 @@ go get github.com/restuwahyu13/gocek
 | **ToMatchObject**          | **value**  | **interface{}**  | `ToMatchObject` to check that a slice, map, struct or array matches a subset of the properties of an object.              |
 | **ToMatch**                | **regex**  | **string**       | `ToMatch` to check that a string matches a regular expression.                                                            |
 | **ToBeError**              | **none**   | **-**            | `ToBeError` when you don't care what a value is and you want to ensure a value is error context.                          |
+| **ToHaveReturnedTimes**    | **value**  | **interface{}**  | `ToHaveReturnedTimes` to ensure that a function returned successfully an exact number of times.                           |
 
 ## Testing
 

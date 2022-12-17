@@ -16,9 +16,7 @@ func (h *gocekAssertion) ToHaveReturned() {
 			h.t.FailNow()
 		}
 	} else {
-		if h.o == "==" && !reflect.DeepEqual(input, nil) {
-			h.t.FailNow()
-		} else if h.o == "!=" && reflect.DeepEqual(input, nil) {
+		if h.o == "==" && reflect.DeepEqual(input, nil) {
 			h.t.FailNow()
 		}
 	}

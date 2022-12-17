@@ -34,5 +34,4 @@ func (h *gocekAssertion) ToBe(value interface{}) {
 			h.t.FailNow()
 		}
 	}
-
 }

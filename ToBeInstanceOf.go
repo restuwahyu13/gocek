@@ -16,7 +16,7 @@ func (h *gocekAssertion) ToBeInstanceOf(value reflect.Kind) {
 			h.t.FailNow()
 		}
 	} else {
-		if h.o == "!=" && !reflect.DeepEqual(input, nil) {
+		if h.o == "==" && reflect.DeepEqual(input, nil) {
 			h.t.FailNow()
 		}
 	}

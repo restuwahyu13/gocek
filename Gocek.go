@@ -18,7 +18,7 @@ type gocekInterface interface {
 	ToBeNil()
 	ToBeTruthy()
 	ToBeFalsy()
-	ToHaveLength(value int)
+	ToHaveLength(value int64)
 	ToBeInstanceOf(value reflect.Kind)
 	ToBeMinus()
 	ToBeZero()
@@ -32,6 +32,7 @@ type gocekInterface interface {
 	ToMatchObject(value interface{})
 	ToMatch(regex string)
 	ToBeError()
+	ToHaveReturnedTimes(value int64)
 }
 
 func NewGocek(t *testing.T) gocekInterface {

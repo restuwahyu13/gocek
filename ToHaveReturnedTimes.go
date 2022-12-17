@@ -33,7 +33,8 @@ func (h *gocekAssertion) ToHaveReturnedTimes(value int64) {
 				if !reflect.DeepEqual(reflect.ValueOf(v).Kind().String(), reflect.Func.String()) {
 					ok = false
 				} else {
-					sliceNames = append(sliceNames, strings.Split(runtime.FuncForPC(reflect.ValueOf(v).Pointer()).Name(), ".")[1])
+					funcName := strings.Split(runtime.FuncForPC(reflect.ValueOf(v).Pointer()).Name(), ".")
+					sliceNames = append(sliceNames, funcName[len(funcName)-1])
 				}
 			}
 
@@ -55,9 +56,11 @@ func (h *gocekAssertion) ToHaveReturnedTimes(value int64) {
 
 		if cEqual == 0 && cnotEqual != len(sliceNames) {
 			h.t.FailNow()
-		}
-
-		if h.o == "==" && int64(cEqual) != value {
+		} else if h.o == "==" && cnotEqual != 0 {
+			h.t.FailNow()
+		} else if h.o == "!=" && cEqual != 0 {
+			h.t.FailNow()
+		} else if h.o == "==" && int64(cEqual) != value {
 			h.t.FailNow()
 		} else if h.o == "!=" && int64(cEqual) == value {
 			h.t.FailNow()

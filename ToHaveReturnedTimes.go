@@ -29,7 +29,99 @@ func (h *gocekAssertion) ToHaveReturnedTimes(value int64) {
 		}
 
 		if reflect.DeepEqual(inputType, reflect.Slice.String()) {
-			for _, v := range input.([]interface{}) {
+			sliceInterface := []interface{}{}
+
+			if reflect.TypeOf(input).Elem().Kind().String() == reflect.Interface.String() {
+				sliceInterface = input.([]interface{})
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Int.String() {
+				for _, v := range input.([]int) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Int8.String() {
+				for _, v := range input.([]int8) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Int16.String() {
+				for _, v := range input.([]int16) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Int32.String() {
+				for _, v := range input.([]int32) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Int64.String() {
+				for _, v := range input.([]int64) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Float32.String() {
+				for _, v := range input.([]float32) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Float64.String() {
+				for _, v := range input.([]float64) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.String.String() {
+				for _, v := range input.([]string) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Bool.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Map.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Chan.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Slice.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Array.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Func.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Pointer.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Ptr.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Struct.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Complex64.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Complex128.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.TypeOf(input).Elem().Kind().String() == reflect.Invalid.String() {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else if reflect.DeepEqual(reflect.TypeOf(input).Elem().Kind().String(), nil) {
+				for _, v := range input.([]bool) {
+					sliceInterface = append(sliceInterface, v)
+				}
+			} else {
+				h.t.FailNow()
+			}
+
+			for _, v := range sliceInterface {
 				if !reflect.DeepEqual(reflect.ValueOf(v).Kind().String(), reflect.Func.String()) {
 					ok = false
 				} else {
